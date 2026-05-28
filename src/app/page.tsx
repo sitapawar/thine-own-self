@@ -117,7 +117,9 @@ export default function Home() {
         <div className={styles.title}>
           to thine own self be true.<span className="cursor" />
         </div>
-        <div className={styles.subtitle}>rate yourself 0–10 across 21 traits</div>
+        <div className={styles.subtitle}>rate yourself 0–10 across 21 traits
+          <br></br>if this doesn't make sense then you shouldn't be here. be patience and wait for the quiz to come. 
+        </div>
       </div>
 
       {/* Name */}
