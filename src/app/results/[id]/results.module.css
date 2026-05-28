@@ -1,0 +1,119 @@
+.main {
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 56px 32px 80px;
+  min-height: 100vh;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.version {
+  color: var(--text-dim);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  margin-bottom: 24px;
+}
+
+.pre {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  white-space: pre;
+  line-height: 1.9;
+}
+
+.preDim {
+  composes: pre;
+  color: var(--text-dim);
+}
+
+.preFaint {
+  composes: pre;
+  color: var(--text-faint);
+}
+
+.preBold {
+  composes: pre;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.loading {
+  color: var(--text-dim);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+}
+
+.error {
+  color: #c0614a;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+}
+
+.methodGroup {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+  margin-bottom: 8px;
+}
+
+.label {
+  font-size: 15px;
+  color: var(--text-faint);
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+.methodBtn {
+  font-size: 14px;
+  font-family: inherit;
+  padding: 5px 14px;
+  border: 1px solid black;
+  border-radius: 2px;
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+.methodBtnActive {
+  border-color: var(--amber);
+  /* background: var(--amber-faint);  */
+  color: var(--amber);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.tryAgainBtn {
+  flex: 1;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  padding: 10px 0;
+  background: transparent;
+  border: 1px solid var(--amber-border);
+  border-radius: 2px;
+  color: var(--text-dim);
+  cursor: pointer;
+}
+
+.shareBtn {
+  flex: 1;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  padding: 10px 0;
+  background: transparent;
+  border: 1px solid var(--amber-border);
+  border-radius: 2px;
+  color: var(--text-dim);
+  cursor: pointer;
+}

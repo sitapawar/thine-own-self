@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0a0a0a;
+  --amber: #f0f0f0;
+  --amber-dim:  #f0f0f0;
+  --amber-faint:  #f0f0f0;
+  --amber-border:  #f0f0f0;
+  --text: #e8e8e8;
+  --text-dim:  #f0f0f0;
+  --text-faint:  #f0f0f0;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::placeholder {
+  color: black;
+  font-weight: normal;
+
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
