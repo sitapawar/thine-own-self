@@ -139,8 +139,8 @@ export default function ResultsPage() {
             <div className={styles.pre}>{THIN}</div>
             <div className={styles.preBold}>{`  ${best.name}`}</div>
             <div className={styles.preDim}>{`  ${best.play}`}</div>
-            <div className={styles.preDim}>{`  match score  :  ${Math.round(bestGoodness * 100)}%`}</div>
-            <div className={styles.preDim}>{`  traits used  :  ${best.traitsCompared}`}</div>
+            <div className={styles.preDim}>{`  match score  :  ${Math.round(bestGoodness * 10000)/100}%`}</div>
+            {/* <div className={styles.preDim}>{`  traits used  :  ${best.traitsCompared}`}</div> */}
             {name && (
               <div className={styles.preDim}>{`  user         :  ${name}`}</div>
             )}
@@ -154,33 +154,27 @@ export default function ResultsPage() {
             <div className={styles.pre}>{THIN}</div>
 
             {results.map((r, i) => {
-              const goodness = normalizeScore(r.score, method, allScores)
-              const isFirst = i === 0
-              return (
-                <div key={r.name} style={{ marginBottom: 2 }}>
-                  <div className={styles.pre}>
-                    {`  ${pad(String(i + 1), 4)}${r.name}`}
-                  </div>
-                  <div className={styles.preFaint}>
-                    {`      ${r.play}`}
-                  </div>
-                  <div className={styles.preDim}>
-                    {`      score: ${Math.round(goodness * 10000)/100}`}
-                  </div>
-                  {i < results.length - 1 && (
-                    <div className={styles.preFaint}>{`  ${'-'.repeat(W - 2)}`}</div>
-                  )}
-                </div>
-              )
-            })}
+  const goodness = normalizeScore(r.score, method, allScores)
+  const isFirst = i === 0
+  return (
+    <div key={r.name} style={{ marginBottom: 2 }}>
+      <div className={styles.preDim}>
+        {`  ${i + 1}    ${r.name} | ${r.play} | ${Math.round(goodness * 10000) / 100}%`}
+      </div>
+      {/* {i < results.length - 1 && (
+        <div className={styles.preFaint}>{`  ${'-'.repeat(W - 2)}`}</div>
+      )} */}
+    </div>
+  )
+})}
+            <div className={styles.pre}>{DIV}</div>
 
-            <div className={styles.pre}>{THIN}</div>
             <div className={styles.preFaint}>{`  algorithm  :  ${METHOD_LABELS[method]}`}</div>
             <div className={styles.pre}>{DIV}</div>
 
             {/* Rerun with different algorithm */}
             <div className={styles.methodGroup}>
-              <div className={styles.label}>// rerun with different algorithm</div>
+              <div className={styles.label}>rerun with different algorithm</div>
               <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap', width: '100%', marginBottom: 12 }}>
                 {(['cosine', 'chebyshev', 'euclidean', 'manhattan'] as MatchMethod[]).map(m => (
                   <button

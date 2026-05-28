@@ -145,35 +145,35 @@
   }
 
   .pre {
-    font-size: 11px;
+    font-size: 14px;
     line-height: 1.7;
     white-space: pre-wrap;
     word-break: break-word;
   }
 
   .preDim {
-    font-size: 11px;
+    font-size: 12px;
     line-height: 1.7;
     white-space: pre-wrap;
     word-break: break-word;
   }
 
   .preFaint {
-    font-size: 11px;
+    font-size: 14px;
     line-height: 1.7;
     white-space: pre-wrap;
     word-break: break-word;
   }
 
   .preBold {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.7;
     white-space: pre-wrap;
     word-break: break-word;
   }
 
   .label {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .methodBtn {
