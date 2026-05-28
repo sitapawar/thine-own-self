@@ -101,7 +101,6 @@
 
 .methodBtnActive {
   border-color: var(--amber);
-  /* background: var(--amber-faint);  */
   color: var(--amber);
 }
 
@@ -117,9 +116,8 @@
   font-size: 14px;
   font-weight: 500;
   padding: 12px 0;
-  /* background: var(--amber);  */
   color: whitesmoke;
-  border: 1px solid whitesmoke; 
+  border: 1px solid whitesmoke;
   border-radius: 2px;
   cursor: pointer;
   letter-spacing: 0.08em;
@@ -127,8 +125,61 @@
 }
 
 .submitBtnLoading {
-  /* background: var(--amber-faint); */
   color: var(--text-dim);
   cursor: not-allowed;
-  /* border: 1px solid white; */
+}
+
+/* ── Mobile ─────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .main {
+    padding: 36px 20px 60px;
+  }
+
+  .header {
+    margin-bottom: 32px;
+  }
+
+  .title {
+    font-size: 17px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .version {
+    font-size: 10px;
+  }
+
+  .label {
+    font-size: 13px;
+  }
+
+  .traitName {
+    font-size: 13px;
+  }
+
+  .traitInput {
+    font-size: 16px; /* prevents iOS zoom on focus */
+    width: 40px;
+  }
+
+  .textInput {
+    font-size: 16px; /* prevents iOS zoom on focus */
+  }
+
+  .methodBtn {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+  .submitBtn {
+    font-size: 15px;
+    padding: 14px 0;
+  }
+
+  .section {
+    margin-bottom: 32px;
+  }
 }

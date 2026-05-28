@@ -25,7 +25,7 @@ function pad(str: string, len: number): string {
   return str.length >= len ? str.slice(0, len) : str + ' '.repeat(len - str.length)
 }
 
-const W = 54
+const W = 35
 const DIV = '='.repeat(W)
 const THIN = '-'.repeat(W)
 
@@ -147,7 +147,6 @@ export default function ResultsPage() {
             {best.worstTrait && (
               <div className={styles.preFaint}>{`  mismatch     :  ${best.worstTrait}`}</div>
             )}
-            <div className={styles.pre}>{DIV}</div>
 
             {/* Full rankings — stacked layout */}
             <div className={styles.pre} style={{ marginTop: 24 }}>{DIV}</div>
@@ -159,14 +158,14 @@ export default function ResultsPage() {
               const isFirst = i === 0
               return (
                 <div key={r.name} style={{ marginBottom: 2 }}>
-                  <div className={isFirst ? styles.preBold : styles.pre}>
+                  <div className={styles.pre}>
                     {`  ${pad(String(i + 1), 4)}${r.name}`}
                   </div>
                   <div className={styles.preFaint}>
                     {`      ${r.play}`}
                   </div>
                   <div className={styles.preDim}>
-                    {`      score: ${Math.round(goodness * 100)}%   traits: ${r.traitsCompared}`}
+                    {`      score: ${Math.round(goodness * 10000)/100}`}
                   </div>
                   {i < results.length - 1 && (
                     <div className={styles.preFaint}>{`  ${'-'.repeat(W - 2)}`}</div>
@@ -199,7 +198,7 @@ export default function ResultsPage() {
                 className={styles.submitBtn}
                 style={{ opacity: pendingMethod === method ? 0.35 : 1 }}
               >
-                &gt; rerun with {pendingMethod}
+                rerun with {pendingMethod}
               </button>
             </div>
 
