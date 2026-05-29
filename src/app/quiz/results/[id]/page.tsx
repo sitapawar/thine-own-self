@@ -7,7 +7,7 @@ import { matchCharacters, MatchMethod, MatchResult } from '@/lib/matching'
 import { supabase } from '@/lib/supabase'
 import styles from './quiz-results.module.css'
 
-const SCORES_PASSWORD = 'todayismybirthday'
+const SCORES_PASSWORD = process.env.NEXT_PUBLIC_SCORES_PASSWORD
 
 const TRAIT_LABELS: Record<string, string> = {
   'performance': 'Performance',
@@ -106,21 +106,7 @@ export default function QuizResultsPage() {
     })
   }, [method])
 
-  useEffect(() => {
-  const handleKey = (e: KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      if (currentAnswer !== null) {
-        if (isLast) {
-          if (allAnswered) handleSubmit()
-        } else {
-          handleNext()
-        }
-      }
-    }
-  }
-  window.addEventListener('keydown', handleKey)
-  return () => window.removeEventListener('keydown', handleKey)
-}, [currentAnswer, isLast, allAnswered, current])
+  
 
   const handleShare = () => {
     navigator.clipboard.writeText(window.location.href)

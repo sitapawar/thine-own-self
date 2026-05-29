@@ -7,7 +7,7 @@ import { matchCharacters, MatchMethod } from '@/lib/matching'
 import { supabase } from '@/lib/supabase'
 import styles from './manual.module.css'
 
-const PASSWORD = 'sighnomore'
+const PASSWORD = process.env.NEXT_PUBLIC_MANUAL_PASSWORD
 
 const TRAITS = [
   "Ambition", "Forgiving", "Repressed", "Action Oriented", "Morality",
