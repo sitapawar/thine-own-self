@@ -1,0 +1,377 @@
+.main {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 56px 32px 80px;
+  min-height: 100vh;
+  font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ── Header ──────────────────────────────────────────── */
+
+.header {
+  margin-bottom: 56px;
+  align-items: center;
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.matchName {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.matchPlay {
+
+  font-size: 15px;
+  color: var(--text-dim);
+  font-style: italic;
+  text-align: center;
+}
+
+.matchMeta {
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--text-faint);
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+/* ── Algorithm toggle ────────────────────────────────── */
+
+.toggleSection {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.toggleLabel {
+  font-size: 11px;
+  text-align: center;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 12px;
+}
+.toggleGroup {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.toggleBtn {
+  font-family: inherit;
+  font-size: 12px;
+  padding: 6px 16px;
+  border: 1px solid var(--amber-border);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.1s;
+  letter-spacing: 0.04em;
+}
+
+.toggleBtn:hover {
+  border-color: var(--text-dim);
+  color: var(--text);
+}
+
+.toggleBtnActive {
+  border-color: var(--text);
+  background: var(--text);
+  color: var(--bg);
+}
+
+/* ── Results table ───────────────────────────────────── */
+
+.tableSection {
+  margin-bottom: 48px;
+}
+
+.tableLabel {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableHead th {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 0 0 12px 0;
+  text-align: left;
+  border-bottom: 1px solid #ffffff;
+}
+
+.tableHead th:last-child {
+  text-align: right;
+}
+
+.tableRow td {
+  padding: 12px 0;
+  border-bottom: 1px solid #ffffff80;
+  font-size: 14px;
+  color: var(--text-dim);
+  vertical-align: middle;
+}
+
+.tableRowFirst td {
+  padding: 12px 0;
+  border-bottom: 1px solid #ffffff80;
+  font-size: 14px;
+  color: var(--text);
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.rank {
+  color: var(--text-faint);
+  font-size: 12px;
+  width: 32px;
+}
+
+.charName {
+  flex: 1;
+}
+
+.charPlay {
+  color: var(--text-faint);
+  font-size: 12px;
+  font-style: italic;
+  padding-right: 16px;
+}
+
+.score {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  width: 48px;
+}
+
+/* ── Actions ─────────────────────────────────────────── */
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 64px;
+}
+
+.actionBtn {
+  flex: 1;
+  font-family: inherit;
+  font-size: 13px;
+  padding: 11px 0;
+  background: transparent;
+  border: 1px solid var(--amber-border);
+  border-radius: 2px;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.actionBtn:hover {
+  border-color: var(--text-dim);
+  color: var(--text);
+}
+
+.shareBtn {
+  flex: 1;
+  font-family: inherit;
+  font-size: 13px;
+  padding: 11px 0;
+  background: var(--text);
+  border: 1px solid var(--text);
+  border-radius: 2px;
+  color: var(--bg);
+  cursor: pointer;
+  transition: opacity 0.1s;
+}
+
+.shareBtn:hover {
+  opacity: 0.85;
+}
+
+/* ── Quote / secret link ─────────────────────────────── */
+
+.quoteWrap {
+  padding-top: 32px;
+  text-align: center;
+}
+
+.quoteLink {
+  font-size: 13px;
+  color: var(--text-faint);
+  font-style: italic;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+  padding: 0;
+  transition: color 0.15s;
+}
+
+.quoteLink:hover {
+  color: var(--text-dim);
+}
+
+/* ── Modal ───────────────────────────────────────────── */
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 24px;
+}
+
+.modal {
+  background: var(--bg);
+  border: 1px solid var(--amber-border);
+  border-radius: 4px;
+  padding: 32px;
+  max-width: 420px;
+  width: 100%;
+}
+
+.modalTitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.modalSub {
+  font-size: 13px;
+  color: var(--text-faint);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.modalInput {
+  width: 100%;
+  background: rgba(237, 237, 240, 0.1);
+  border: 1px solid var(--amber-border);
+  border-radius: 2px;
+  color: var(--text);
+  font-size: 14px;
+  font-family: inherit;
+  padding: 10px 12px;
+  outline: none;
+  margin-bottom: 12px;
+}
+
+.modalInput::placeholder {
+  color: var(--text-faint);
+}
+
+.modalError {
+  font-size: 12px;
+  color: #c0614a;
+  margin-bottom: 12px;
+}
+
+.modalBtn {
+  width: 100%;
+  font-family: inherit;
+  font-size: 13px;
+  padding: 10px 0;
+  background: var(--text);
+  border: none;
+  border-radius: 2px;
+  color: var(--bg);
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.modalClose {
+  width: 100%;
+  font-family: inherit;
+  font-size: 13px;
+  padding: 10px 0;
+  background: transparent;
+  border: 1px solid var(--amber-border);
+  border-radius: 2px;
+  color: var(--text-dim);
+  cursor: pointer;
+}
+
+/* Scores grid shown after unlock */
+.scoresGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 24px;
+  margin-top: 20px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.scoreRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--amber-border);
+}
+
+.scoreTrait {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.scoreVal {
+  font-size: 12px;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+
+/* ── Mobile ──────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .main {
+    padding: 36px 20px 60px;
+  }
+
+  .matchName {
+    font-size: 30px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .scoresGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal {
+    padding: 24px 20px;
+  }
+}

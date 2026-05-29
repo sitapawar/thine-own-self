@@ -1,0 +1,266 @@
+.main {
+  max-width: 500px;
+  min-width:500;
+  margin: 0 auto;
+  padding: 10px 32px 80px;
+  min-height: 100vh;
+  font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ── Name screen ─────────────────────────────────────── */
+
+.nameScreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 70vh;
+  gap: 32px;
+}
+
+.nameTitle {
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.nameSub {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin-top: -16px;
+}
+
+.nameInput {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--amber-border);
+  color: var(--text);
+  font-size: 16px;
+  font-family: inherit;
+  padding: 10px 0;
+  outline: none;
+}
+
+.nameInput::placeholder {
+  color: var(--text-faint);
+}
+
+/* ── Progress bar ────────────────────────────────────── */
+
+.progressWrap {
+  margin-bottom: 48px;
+}
+
+.progressMeta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.progressTrack {
+  width: 100%;
+  height: 1px;
+  background: var(--amber-border);
+}
+
+.progressFill {
+  height: 1px;
+  background: var(--text);
+  transition: width 0.3s ease;
+}
+
+/* ── Question ────────────────────────────────────────── */
+
+.questionWrap {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 48px;
+}
+
+.questionText {
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+/* ── Answer buttons ──────────────────────────────────── */
+
+.answerWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.answerLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-faint);
+  letter-spacing: 0.06em;
+  padding: 0 2px;
+}
+
+.answerButtons {
+  display: flex;
+  gap: 6px;
+}
+
+.answerBtn {
+  flex: 1;
+  aspect-ratio: 1;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 400;
+  border: 1px solid var(--amber-border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.answerBtn:hover {
+  border-color: var(--text-dim);
+  color: var(--text);
+}
+
+.answerBtnSelected {
+  border-color: var(--text);
+  background: var(--text);
+  color: var(--bg);
+  font-weight: 500;
+}
+
+.answerBtnMid {
+  border-color: rgba(240, 240, 240, 0.3);
+}
+
+/* ── Navigation ──────────────────────────────────────── */
+
+.navRow {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.navBtn {
+  flex: 1;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 12px 0;
+  background: transparent;
+  border: 1px solid var(--amber-border);
+  border-radius: 2px;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.navBtn:hover {
+  border-color: var(--text-dim);
+  color: var(--text);
+}
+
+.navBtnDisabled {
+  opacity: 0.2;
+  cursor: default;
+  pointer-events: none;
+}
+
+.nextBtn {
+  flex: 2;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 12px 0;
+  background: var(--text);
+  border: 1px solid var(--text);
+  border-radius: 2px;
+  color: var(--bg);
+  cursor: pointer;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: opacity 0.1s;
+}
+
+.nextBtn:hover {
+  opacity: 0.88;
+}
+
+.nextBtnDisabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.submitBtn {
+  width: 100%;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 14px 0;
+  background: var(--text);
+  border: 1px solid var(--text);
+  border-radius: 2px;
+  color: var(--bg);
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  transition: opacity 0.1s;
+  margin-top: 8px;
+}
+
+.submitBtn:hover {
+  opacity: 0.88;
+}
+
+.submitBtnDisabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.error {
+  font-size: 13px;
+  color: #c0614a;
+  margin-top: 8px;
+}
+
+/* ── Mobile ──────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .main {
+    padding: 10px 20px 60px;
+  }
+
+  .questionText {
+    font-size: 18px;
+  }
+
+  .nameTitle {
+    font-size: 22px;
+  }
+
+  .answerBtn {
+    font-size: 12px;
+    border-radius: 3px;
+  }
+
+  .answerButtons {
+    gap: 4px;
+  }
+
+  .progressWrap {
+    margin-bottom: 32px;
+  }
+}

@@ -1,0 +1,207 @@
+/* Inherits the terminal aesthetic from the original page.module.css */
+/* Copy all rules from page.module.css and add the gate styles below */
+
+.main {
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 56px 32px 80px;
+  min-height: 100vh;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.header {
+  margin-bottom: 48px;
+}
+
+.version {
+  color: var(--text-dim);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: var(--text-dim);
+  font-size: 15px;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.label {
+  font-size: 15px;
+  color: var(--text-faint);
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+.textInput {
+  width: 100%;
+  background: rgba(237, 237, 240, 0.917);
+  border: none;
+  color: black;
+  font-size: 15px;
+  font-family: inherit;
+  padding: 8px;
+  font-weight: bold;
+  outline: none;
+}
+
+.traitRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.traitName {
+  color: var(--text-dim);
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.traitIndex {
+  color: var(--text-faint);
+  margin-right: 10px;
+}
+
+.traitInput {
+  width: 44px;
+  background: rgba(237, 237, 240, 0.917);
+  border: none;
+  color: black;
+  font-size: 15px;
+  font-family: inherit;
+  text-align: center;
+  outline: none;
+  padding: 2px 4px;
+}
+
+.methodGroup {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.methodBtn {
+  font-size: 14px;
+  font-family: inherit;
+  padding: 5px 14px;
+  border: 1px solid black;
+  border-radius: 2px;
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.methodBtnActive {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.error {
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: #c0614a;
+}
+
+.submitBtn {
+  width: 100%;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 0;
+  color: whitesmoke;
+  border: 1px solid whitesmoke;
+  border-radius: 2px;
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  transition: opacity 0.1s;
+  background: transparent;
+}
+
+.submitBtnLoading {
+  color: var(--text-dim);
+  cursor: not-allowed;
+}
+
+/* ── Password gate ───────────────────────────────────── */
+
+.gate {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 70vh;
+  gap: 20px;
+  max-width: 320px;
+}
+
+.gateTitle {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.gateSub {
+  font-size: 13px;
+  color: var(--text-faint);
+  margin-top: -8px;
+}
+
+/* ── Mobile ──────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .main {
+    padding: 36px 20px 60px;
+  }
+
+  .title {
+    font-size: 17px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .label {
+    font-size: 13px;
+  }
+
+  .traitName {
+    font-size: 13px;
+  }
+
+  .traitInput {
+    font-size: 16px;
+    width: 40px;
+  }
+
+  .textInput {
+    font-size: 16px;
+  }
+
+  .methodBtn {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+  .submitBtn {
+    font-size: 15px;
+    padding: 14px 0;
+  }
+
+  .section {
+    margin-bottom: 32px;
+  }
+}
