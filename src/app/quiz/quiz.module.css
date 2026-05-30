@@ -239,27 +239,38 @@
 
 @media (max-width: 600px) {
   .main {
-    padding: 10px 20px 60px;
+    padding: 10px 16px 60px;
+    max-width: 100%;
   }
 
   .questionText {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .nameTitle {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .answerBtn {
-    font-size: 12px;
+    font-size: 11px;
     border-radius: 3px;
+    padding: 4px 2px;
   }
 
   .answerButtons {
-    gap: 4px;
+    gap: 3px;
   }
 
   .progressWrap {
     margin-bottom: 32px;
+  }
+
+  .questionWrap {
+    gap: 32px;
+  }
+
+  .navBtn, .nextBtn {
+    font-size: 13px;
+    padding: 10px 0;
   }
 }
