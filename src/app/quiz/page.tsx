@@ -223,7 +223,7 @@ useEffect(() => {
       {/* Progress */}
       <div className={styles.progressWrap}>
         <div className={styles.progressMeta}>
-          <span>{current + 1} OF {total}</span>
+          <span>{current + 1} OF 40</span>
           {name && <span>{name}</span>}
         </div>
         <div className={styles.progressTrack}>
