@@ -1,5 +1,6 @@
 .main {
   max-width: 500px;
+  width: 100%;
   margin: 0 auto;
   padding: 10px 32px 80px;
   min-height: 100vh;
@@ -62,8 +63,9 @@
 }
 
 .progressTrack {
-  width: 100%;
+  width:90%;
   height: 1px;
+  margin: auto;
   background: var(--amber-border);
 }
 
@@ -76,6 +78,7 @@
 /* ── Question ────────────────────────────────────────── */
 
 .questionWrap {
+  width: 100%;
   min-height: 60vh;
   display: flex;
   flex-direction: column;
@@ -84,32 +87,28 @@
 }
 
 .questionText {
+  width: 100%;
   font-size: 22px;
   font-weight: 300;
   color: var(--text);
   line-height: 1.5;
   letter-spacing: -0.01em;
   text-align: center;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* ── Answer buttons ──────────────────────────────────── */
-
 .answerWrap {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.answerLabels {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  color: var(--text-faint);
-  letter-spacing: 0.06em;
-  padding: 0 2px;
-}
-
 .answerButtons {
+  width: 100%;
   display: flex;
   gap: 6px;
 }
