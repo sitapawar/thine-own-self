@@ -88,7 +88,7 @@
 
 .questionText {
   width: 100%;
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 300;
   color: var(--text);
   line-height: 1.5;
@@ -111,6 +111,15 @@
   width: 100%;
   display: flex;
   gap: 6px;
+}
+
+.answerLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-faint);
+  letter-spacing: 0.06em;
+  padding: 0 2px;
 }
 
 .answerBtn {
@@ -243,7 +252,7 @@
   }
 
   .questionText {
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .nameTitle {
