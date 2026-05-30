@@ -8,7 +8,6 @@ import { supabase } from '@/lib/supabase'
 import styles from './quiz-results.module.css'
 
 const SCORES_PASSWORD = process.env.NEXT_PUBLIC_SCORES_PASSWORD
-
 const TRAIT_LABELS: Record<string, string> = {
   'performance': 'Performance',
   'Gender (binary but its a spectrum)': 'Gender (spectrum)',
@@ -81,6 +80,7 @@ export default function QuizResultsPage() {
           'performance': data.performance,
           'Honor': data.honor,
           'Intention': data.intention,
+          'Affability': data.affability,
         }
         setUserScores(scores)
 

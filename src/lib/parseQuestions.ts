@@ -6,7 +6,7 @@ export const TRAITS = [
   'Emotion', 'Idealism', 'Chaos', 'Humor', 'Romance', 'Pining',
   'Duty', 'Loyalty', 'Power Hunger', 'Gender (having it)',
   'Gender (binary but its a spectrum)', 'Self-Awareness', 'Charisma',
-  'performance', 'Honor', 'Intention',
+  'performance', 'Honor', 'Intention', 'Affability' 
 ]
 
 export interface Question {

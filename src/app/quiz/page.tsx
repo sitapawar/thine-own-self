@@ -30,13 +30,19 @@ export default function QuizPage() {
   
 
   useEffect(() => {
-    loadQuestions()
-      .then(d => {
-        setData(d)
-        setAnswers(new Array(d.questions.length).fill(null))
-      })
-      .catch(() => setLoadError('could not load questions. please try again.'))
-  }, [])
+  loadQuestions()
+    .then(d => {
+      // Fisher-Yates shuffle
+      const shuffled = [...d.questions]
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+      }
+      setData({ ...d, questions: shuffled })
+      setAnswers(new Array(shuffled.length).fill(null))
+    })
+    .catch(() => setLoadError('could not load questions. please try again.'))
+}, [])
   
 
   const questions = data?.questions ?? []
@@ -126,6 +132,7 @@ useEffect(() => {
           performance: scores['performance'],
           honor: scores['Honor'],
           intention: scores['Intention'],
+          affability: scores['Affability'],
           matched_character: best.name,
           matched_play: best.play,
           match_score: parseFloat(best.score.toFixed(4)),
