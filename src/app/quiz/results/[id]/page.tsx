@@ -153,7 +153,7 @@ export default function QuizResultsPage() {
         </div>
         <div className={styles.matchPlay}>{best.play}</div>
         <div className={styles.matchMeta}>
-          {Math.round(normalizeScore(best.score, method, allScores) * 100)}% match
+          {/* {Math.round(normalizeScore(best.score, method, allScores) * 100)}% match */}
           &nbsp;·&nbsp;
           {best.traitsCompared} traits compared
         </div>
@@ -168,7 +168,7 @@ export default function QuizResultsPage() {
               <th style={{ width: 32 }}>#</th>
               <th>character</th>
               <th>play</th>
-              <th style={{ textAlign: 'right' }}>match</th>
+              <th style={{ textAlign: 'right' }}> </th>
             </tr>
           </thead>
           <tbody>
@@ -176,11 +176,11 @@ export default function QuizResultsPage() {
               const goodness = normalizeScore(r.score, method, allScores)
               const isFirst = i === 0
               return (
-                <tr key={r.name} className={isFirst ? styles.tableRowFirst : styles.tableRow}>
+                <tr key={r.name} className={styles.tableRow}>
                   <td className={styles.rank}>{i + 1}</td>
                   <td className={styles.charName}>{r.name}</td>
                   <td className={styles.charPlay}>{r.play}</td>
-                  <td className={styles.score}>{Math.round(goodness * 100)}%</td>
+                  {/* <td className={styles.score}>{Math.round(goodness * 100)}%</td> */}
                 </tr>
               )
             })}
