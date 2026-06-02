@@ -147,6 +147,18 @@ export default function QuizResultsPage() {
 
       {/* Header */}
       <div className={styles.header}>
+        {best.quote && (
+  <div style={{
+    fontSize: 13,
+    color: 'var(--text-faint)',
+    fontStyle: 'italic',
+    marginBottom: 12,
+    lineHeight: 1.6,
+    textAlign: 'center',
+  }}>
+    &ldquo;{best.quote}&rdquo;
+  </div>
+)}
         <div className={styles.eyebrow}>thy truest counterpart</div>
         <div className={styles.matchName}>
           {`${best.name}`}

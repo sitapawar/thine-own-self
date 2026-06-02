@@ -7,17 +7,26 @@ export interface MatchResult {
   play: string
   score: number
   method: MatchMethod
-  worstTrait?: string  // only for chebyshev
+  worstTrait?: string
   traitsCompared: number
+  quote?: string | null  
 }
+
+const PRIMARY_MULTIPLIER = 2.0
 
 function getSharedTraits(
   userScores: Record<string, number>,
   character: Character
-): { userVals: number[]; charVals: number[]; traitNames: string[] } {
+): {
+  userVals: number[]
+  charVals: number[]
+  traitNames: string[]
+  weights: number[]
+} {
   const userVals: number[] = []
   const charVals: number[] = []
   const traitNames: string[] = []
+  const weights: number[] = []
 
   for (const trait of TRAITS) {
     const u = userScores[trait]
@@ -26,38 +35,49 @@ function getSharedTraits(
       userVals.push(u)
       charVals.push(c)
       traitNames.push(trait)
+      weights.push(character.primary[trait] ? PRIMARY_MULTIPLIER : 1.0)
     }
   }
-  return { userVals, charVals, traitNames }
+
+  return { userVals, charVals, traitNames, weights }
 }
 
-function cosine(u: number[], c: number[]): number {
-  const dot = u.reduce((sum, val, i) => sum + val * c[i], 0)
-  const magU = Math.sqrt(u.reduce((sum, val) => sum + val * val, 0))
-  const magC = Math.sqrt(c.reduce((sum, val) => sum + val * val, 0))
+// Cosine similarity with weighted traits
+// Primary traits contribute more to the dot product and magnitudes
+function cosine(u: number[], c: number[], w: number[]): number {
+  const dot = u.reduce((sum, val, i) => sum + val * c[i] * w[i], 0)
+  const magU = Math.sqrt(u.reduce((sum, val, i) => sum + (val * Math.sqrt(w[i])) ** 2, 0))
+  const magC = Math.sqrt(c.reduce((sum, val, i) => sum + (val * Math.sqrt(w[i])) ** 2, 0))
   if (magU === 0 || magC === 0) return 0
   return dot / (magU * magC)
 }
 
-function euclidean(u: number[], c: number[]): number {
-  return Math.sqrt(u.reduce((sum, val, i) => sum + Math.pow(val - c[i], 2), 0))
+// Euclidean distance with weighted traits
+// Primary trait differences are multiplied before squaring
+function euclidean(u: number[], c: number[], w: number[]): number {
+  return Math.sqrt(u.reduce((sum, val, i) => sum + w[i] * Math.pow(val - c[i], 2), 0))
 }
 
-function manhattan(u: number[], c: number[]): number {
-  return u.reduce((sum, val, i) => sum + Math.abs(val - c[i]), 0)
+// Manhattan distance with weighted traits
+// Primary trait differences contribute more to total
+function manhattan(u: number[], c: number[], w: number[]): number {
+  return u.reduce((sum, val, i) => sum + w[i] * Math.abs(val - c[i]), 0)
 }
 
+// Chebyshev: max weighted difference across all traits
+// Primary trait differences are multiplied by 2 before taking the max
 function chebyshev(
   u: number[],
   c: number[],
+  w: number[],
   traitNames: string[]
 ): { distance: number; worstTrait: string } {
   let maxDiff = 0
   let worstTrait = ''
   u.forEach((val, i) => {
-    const diff = Math.abs(val - c[i])
-    if (diff > maxDiff) {
-      maxDiff = diff
+    const weightedDiff = Math.abs(val - c[i]) * w[i]
+    if (weightedDiff > maxDiff) {
+      maxDiff = weightedDiff
       worstTrait = traitNames[i]
     }
   })
@@ -73,20 +93,20 @@ export function matchCharacters(
   const results: MatchResult[] = []
 
   for (const char of characters) {
-    const { userVals, charVals, traitNames } = getSharedTraits(userScores, char)
+    const { userVals, charVals, traitNames, weights } = getSharedTraits(userScores, char)
     if (userVals.length < 3) continue
 
     let score: number
     let worstTrait: string | undefined
 
     if (method === 'cosine') {
-      score = cosine(userVals, charVals)
+      score = cosine(userVals, charVals, weights)
     } else if (method === 'euclidean') {
-      score = euclidean(userVals, charVals)
+      score = euclidean(userVals, charVals, weights)
     } else if (method === 'manhattan') {
-      score = manhattan(userVals, charVals)
+      score = manhattan(userVals, charVals, weights)
     } else {
-      const result = chebyshev(userVals, charVals, traitNames)
+      const result = chebyshev(userVals, charVals, weights, traitNames)
       score = result.distance
       worstTrait = result.worstTrait
     }
@@ -98,10 +118,10 @@ export function matchCharacters(
       method,
       worstTrait,
       traitsCompared: userVals.length,
+      quote: char.quote,
     })
   }
 
-  // cosine = higher is better, rest = lower is better
   const higherIsBetter = method === 'cosine'
   results.sort((a, b) => higherIsBetter ? b.score - a.score : a.score - b.score)
 
