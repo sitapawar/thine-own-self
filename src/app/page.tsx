@@ -28,7 +28,7 @@ export default function LandingPage() {
             take the quiz
           </button>
           <div className={styles.meta}>
-            80 characters &nbsp;·&nbsp; 40 questions &nbsp;·&nbsp; ~5-8 minutes
+            80 characters &nbsp;·&nbsp; 40 questions &nbsp;·&nbsp; ~3-5 minutes
           </div>
         </div>
 
