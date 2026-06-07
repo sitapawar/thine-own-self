@@ -9,10 +9,11 @@ export interface MatchResult {
   method: MatchMethod
   worstTrait?: string
   traitsCompared: number
-  quote?: string | null  
+  quote?: string | null
+  closestTraits?: string[]
 }
 
-const PRIMARY_MULTIPLIER = 3.0
+const PRIMARY_MULTIPLIER = 1
 
 function getSharedTraits(
   userScores: Record<string, number>,
@@ -42,8 +43,43 @@ function getSharedTraits(
   return { userVals, charVals, traitNames, weights }
 }
 
-// Cosine similarity with weighted traits
-// Primary traits contribute more to the dot product and magnitudes
+// Find top 3 closest traits using Option B+D:
+// - both scores must be in 0-3 or 7-10 range (genuine alignment)
+// - primary traits sorted higher (adjusted diff * 0.5)
+// - sorted by smallest adjusted difference
+const EXCLUDED_TRAITS = new Set([
+  'Gender (binary but its a spectrum)',
+  'Repressed',
+])
+
+function findClosestTraits(
+  userVals: number[],
+  charVals: number[],
+  traitNames: string[],
+  weights: number[]
+): string[] {
+  const candidates: { trait: string; adjustedDiff: number }[] = []
+
+  userVals.forEach((u, i) => {
+    const trait = traitNames[i]
+    if (EXCLUDED_TRAITS.has(trait)) return   // ← skip excluded
+
+    const c = charVals[i]
+    const bothHigh = u >= 7 && c >= 7
+    const bothLow = u <= 3 && c <= 3
+    if (!bothHigh && !bothLow) return
+
+    const rawDiff = Math.abs(u - c)
+    const isPrimary = weights[i] === PRIMARY_MULTIPLIER
+    const adjustedDiff = isPrimary ? rawDiff * 0.5 : rawDiff
+
+    candidates.push({ trait, adjustedDiff })
+  })
+
+  candidates.sort((a, b) => a.adjustedDiff - b.adjustedDiff)
+  return candidates.slice(0, 3).map(c => c.trait)
+}
+
 function cosine(u: number[], c: number[], w: number[]): number {
   const dot = u.reduce((sum, val, i) => sum + val * c[i] * w[i], 0)
   const magU = Math.sqrt(u.reduce((sum, val, i) => sum + (val * Math.sqrt(w[i])) ** 2, 0))
@@ -52,20 +88,14 @@ function cosine(u: number[], c: number[], w: number[]): number {
   return dot / (magU * magC)
 }
 
-// Euclidean distance with weighted traits
-// Primary trait differences are multiplied before squaring
 function euclidean(u: number[], c: number[], w: number[]): number {
   return Math.sqrt(u.reduce((sum, val, i) => sum + w[i] * Math.pow(val - c[i], 2), 0))
 }
 
-// Manhattan distance with weighted traits
-// Primary trait differences contribute more to total
 function manhattan(u: number[], c: number[], w: number[]): number {
   return u.reduce((sum, val, i) => sum + w[i] * Math.abs(val - c[i]), 0)
 }
 
-// Chebyshev: max weighted difference across all traits
-// Primary trait differences are multiplied by 2 before taking the max
 function chebyshev(
   u: number[],
   c: number[],
@@ -119,11 +149,24 @@ export function matchCharacters(
       worstTrait,
       traitsCompared: userVals.length,
       quote: char.quote,
+      closestTraits: [],
     })
   }
 
   const higherIsBetter = method === 'cosine'
   results.sort((a, b) => higherIsBetter ? b.score - a.score : a.score - b.score)
 
-  return results.slice(0, topN)
+  const topResults = results.slice(0, topN)
+
+  // Only compute closest traits for #1 match
+  if (topResults.length > 0) {
+    const best = topResults[0]
+    const bestChar = characters.find(c => c.name === best.name)
+    if (bestChar) {
+      const { userVals, charVals, traitNames, weights } = getSharedTraits(userScores, bestChar)
+      topResults[0].closestTraits = findClosestTraits(userVals, charVals, traitNames, weights)
+    }
+  }
+
+  return topResults
 }

@@ -3,7 +3,7 @@ const QUESTIONS_URL =
 
 export const TRAITS = [
   'Ambition', 'Forgiving', 'Repressed', 'Action Oriented', 'Morality',
-  'Emotion', 'Idealism', 'Chaos', 'Humor', 'Romance', 'Pining',
+  'Emotion', 'Idealism', 'Chaos', 'Humor', 'Romance', 
   'Duty', 'Loyalty', 'Power Hunger',"self-destruction",
   'Gender (binary but its a spectrum)', 'Self-Awareness', 'Charisma',
   'performance', 'Honor', 'Intention', 'Affability' 

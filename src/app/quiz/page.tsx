@@ -121,7 +121,7 @@ useEffect(() => {
           chaos: scores['Chaos'],
           humor: scores['Humor'],
           romance: scores['Romance'],
-          pining: scores['Pining'],
+          // pining: scores['Pining'],
           duty: scores['Duty'],
           loyalty: scores['Loyalty'],
           power_hunger: scores['Power Hunger'],

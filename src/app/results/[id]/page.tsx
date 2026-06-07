@@ -70,7 +70,7 @@ export default function ResultsPage() {
           "Chaos": data.chaos,
           "Humor": data.humor,
           "Romance": data.romance,
-          "Pining": data.pining,
+          // "Pining": data.pining,
           "Duty": data.duty,
           "Loyalty": data.loyalty,
           "Power Hunger": data.power_hunger,

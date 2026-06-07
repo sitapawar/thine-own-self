@@ -69,7 +69,7 @@ export default function QuizResultsPage() {
           'Chaos': data.chaos,
           'Humor': data.humor,
           'Romance': data.romance,
-          'Pining': data.pining,
+        //   'Pining': data.pining,
           'Duty': data.duty,
           'Loyalty': data.loyalty,
           'Power Hunger': data.power_hunger,
@@ -164,11 +164,13 @@ export default function QuizResultsPage() {
           {`${best.name}`}
         </div>
         <div className={styles.matchPlay}>{best.play}</div>
-        <div className={styles.matchMeta}>
-          {/* {Math.round(normalizeScore(best.score, method, allScores) * 100)}% match */}
-          &nbsp;·&nbsp;
-          {best.traitsCompared} traits compared
-        </div>
+       <div className={styles.matchMeta}>
+  &nbsp;&nbsp;
+  {best.traitsCompared} traits compared
+  {best.closestTraits && best.closestTraits.length > 0 && (
+    <>&nbsp;·&nbsp; Most aligned in {best.closestTraits.join(', ')}</>
+  )}
+</div>
       </div>
 
       {/* Results table */}

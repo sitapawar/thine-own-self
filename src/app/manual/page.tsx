@@ -11,7 +11,7 @@ const PASSWORD = process.env.NEXT_PUBLIC_MANUAL_PASSWORD
 
 const TRAITS = [
   "Ambition", "Forgiving", "Repressed", "Action Oriented", "Morality",
-  "Emotion", "Idealism", "Chaos", "Humor", "Romance", "Pining",
+  "Emotion", "Idealism", "Chaos", "Humor", "Romance", 
   "Duty", "Loyalty", "Power Hunger", "self-destruction",
   "Gender (binary but its a spectrum)", "Self-Awareness", "Charisma",
   "performance", "Honor", "Intention"
@@ -98,7 +98,7 @@ export default function ManualPage() {
           chaos: scores["Chaos"],
           humor: scores["Humor"],
           romance: scores["Romance"],
-          pining: scores["Pining"],
+          // pining: scores["Pining"],
           duty: scores["Duty"],
           loyalty: scores["Loyalty"],
           power_hunger: scores["Power Hunger"],
