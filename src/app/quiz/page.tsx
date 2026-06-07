@@ -125,7 +125,7 @@ useEffect(() => {
           duty: scores['Duty'],
           loyalty: scores['Loyalty'],
           power_hunger: scores['Power Hunger'],
-          gender_having: scores['Gender (having it)'],
+          self_destruction: scores["self-destruction"],
           gender_spectrum: scores['Gender (binary but its a spectrum)'],
           self_awareness: scores['Self-Awareness'],
           charisma: scores['Charisma'],

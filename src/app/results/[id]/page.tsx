@@ -74,7 +74,7 @@ export default function ResultsPage() {
           "Duty": data.duty,
           "Loyalty": data.loyalty,
           "Power Hunger": data.power_hunger,
-          "Gender (having it)": data.gender_having,
+          "Self-destruction": data.self_destruction,
           "Gender (binary but its a spectrum)": data.gender_spectrum,
           "Self-Awareness": data.self_awareness,
           "Charisma": data.charisma,

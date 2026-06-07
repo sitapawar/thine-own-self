@@ -12,7 +12,7 @@ export interface MatchResult {
   quote?: string | null  
 }
 
-const PRIMARY_MULTIPLIER = 2.0
+const PRIMARY_MULTIPLIER = 3.0
 
 function getSharedTraits(
   userScores: Record<string, number>,

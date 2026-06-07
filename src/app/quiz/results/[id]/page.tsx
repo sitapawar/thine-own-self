@@ -73,7 +73,7 @@ export default function QuizResultsPage() {
           'Duty': data.duty,
           'Loyalty': data.loyalty,
           'Power Hunger': data.power_hunger,
-          'Gender (having it)': data.gender_having,
+          'Self-Destruction': data.self_destruction,
           'Gender (binary but its a spectrum)': data.gender_spectrum,
           'Self-Awareness': data.self_awareness,
           'Charisma': data.charisma,
